@@ -5,10 +5,20 @@ namespace HandleStudentsApp
     public class StudentManager
     {
         public List<Student> Students = new List<Student>();
-        public void AddStudent(Student student) 
+
+        public StudentManager() 
         { 
-            Students.Add(student);
+            Student initialStudent1 = new Student("Sara", 111, 20);
+            initialStudent1.AddGrade(65);
+            initialStudent1.AddGrade(85);
+            Student initialStudent2 = new Student("Niklas", 222, 21);
+            initialStudent2.AddGrade(75);
+            initialStudent2.AddGrade(85);
+
+            Students.Add(initialStudent1);
+            Students.Add(initialStudent2);
         }
+
         public void AddNewStudent() 
         {
             string addNewStudentName = "";
@@ -78,15 +88,15 @@ namespace HandleStudentsApp
             }
 
             Student newStudent = new Student(addNewStudentName, addNewStudentId, addNewStudentAge);
-            AddStudent(newStudent);
+            Students.Add(newStudent);
             Console.WriteLine($"Student {addNewStudentName} with ID {addNewStudentId} has been added.");
         }
         public void AddGradeToStudent()
         {
             Console.WriteLine("Type the name of the student you want to add a grade to:");
-            string studentToAddGradeTo = Console.ReadLine()!;
+            string studentNameToAddGradeTo = Console.ReadLine()!;
 
-            Student? foundStudent = Students.FirstOrDefault(student => student.StudentName == studentToAddGradeTo);
+            Student? foundStudent = Students.FirstOrDefault(student => student.StudentName == studentNameToAddGradeTo);
 
             if (foundStudent != null)
             {
@@ -94,11 +104,11 @@ namespace HandleStudentsApp
                 int studentGradeToAdd = Convert.ToInt32(Console.ReadLine()!);
 
                 foundStudent.AddGrade(studentGradeToAdd);
-                Console.WriteLine($"{studentToAddGradeTo}'s grade {studentGradeToAdd} has been added.");
+                Console.WriteLine($"{studentNameToAddGradeTo}'s grade {studentGradeToAdd} has been added.");
             }
             else
             {
-                Console.WriteLine($"Student with the name {studentToAddGradeTo} was not found.");
+                Console.WriteLine($"Student with the name {studentNameToAddGradeTo} was not found.");
             }
         }
         public void RemoveStudent() 

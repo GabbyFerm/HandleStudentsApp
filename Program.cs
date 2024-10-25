@@ -5,7 +5,6 @@
         static void Main(string[] args)
         {
             StudentManager studentManager = new StudentManager();
-            InitialiseStudentList(studentManager);
 
             Console.WriteLine("Welcome to the Student Management System");
 
@@ -17,7 +16,7 @@
                 switch (menuOptionChoosed)
                 {
                     case "1":
-                        studentManager.Students.ForEach(student => student.ShowStudentInfo());
+                        studentManager.Students.ForEach(Student => Student.ShowStudentInfo());
                         break;
                     case "2":
                         studentManager.AddNewStudent();
@@ -44,18 +43,6 @@
 
                 }
             }
-        }
-        private static void InitialiseStudentList(StudentManager studentManager)
-        {
-            Student student1 = new Student("Sara", 111, 20);
-            student1.AddGrade(65);
-            student1.AddGrade(85);
-            studentManager.AddStudent(student1);
-
-            Student student2 = new Student("Niklas", 222, 21);
-            student2.AddGrade(75);
-            student2.AddGrade(85);
-            studentManager.AddStudent(student2);
         }
         private static void PrintOutMenu()
         {
