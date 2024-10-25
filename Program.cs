@@ -5,16 +5,7 @@
         static void Main(string[] args)
         {
             StudentManager studentManager = new StudentManager();
-
-            Student student1 = new Student("Sara", 111, 20);
-            student1.AddGrade(65);
-            student1.AddGrade(85);
-            studentManager.AddStudent(student1);
-
-            Student student2 = new Student("Niklas", 222, 21);
-            student2.AddGrade(75);
-            student2.AddGrade(85);
-            studentManager.AddStudent(student2);
+            InitialiseStudentList(studentManager);
 
             Console.WriteLine("Welcome to the Student Management System");
 
@@ -43,7 +34,6 @@
                     case "6":
                         Console.WriteLine("Above wich average value do you want to list students:");
                         int averageGradeAboveValue = Convert.ToInt32(Console.ReadLine()!);
-
                         studentManager.ListStudentsWithGradeAbove(averageGradeAboveValue);
                         break;
                     case "7":
@@ -54,7 +44,18 @@
 
                 }
             }
+        }
+        private static void InitialiseStudentList(StudentManager studentManager)
+        {
+            Student student1 = new Student("Sara", 111, 20);
+            student1.AddGrade(65);
+            student1.AddGrade(85);
+            studentManager.AddStudent(student1);
 
+            Student student2 = new Student("Niklas", 222, 21);
+            student2.AddGrade(75);
+            student2.AddGrade(85);
+            studentManager.AddStudent(student2);
         }
         private static void PrintOutMenu()
         {
